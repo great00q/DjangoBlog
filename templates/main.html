@@ -1,0 +1,30 @@
+            {%extends 'base.html'%}
+            {%block body%}
+            <div class="col-sm-9" >
+                {% for i in content %}
+                <h1 class="page-header">{{i.title}}</h1>
+                <p>&nbsp&nbsp&nbsp&nbsp{{i.content}}</p>
+                <br>
+                <h3 class="page-header">评论区</h3>
+                {%for x in comment%}
+                    <p><b>{{x.author}}:</b>{{x.content}}</p>
+                {%endfor%}
+                <form action="{%url 'articleViews:comment' i.id %}" method='post'>
+                    {%csrf_token%}
+                    <textarea name="comment" id="" cols="30" rows="10" class="form-control"></textarea>
+                    <input type="submit" class="btn-primary btn-md pull-right">
+                    <input type="reset" class="btn-danger btn-md pull-right">
+                </form>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+            {%endfor%}
+
+            
+
+            
+            </div>
+            {%include 'module.html'%}
+            {%endblock body%}

@@ -1,0 +1,42 @@
+            {%extends 'base.html'%}
+            {%block body%}
+            <div class="col-sm-9" >
+                <table class="table table-hover table-striped">
+                {%for i in content%}
+                
+                    <tr>
+                        <td style="border-right:thin dotted;">
+                            <ul class="list-unstyled" style="margin-top:15px;">
+                                <li class="text-center" style="width:80px">{{i.commentNum}}</li>
+                                <li class="text-center" style="width:80px">评论</li>
+                                <li class="text-center" style="width:80px">{{i.viewNum}}</li>
+                                <li class="text-center" style="width:80px">浏览</li>
+                            </ul>
+                        </td>
+
+                        <td>                    
+                            <ul class="list-unstyled">
+                                <li><p class="lead"><a href="{% url 'articleViews:article' i.id %}">{{i.title}}</a></p></li>
+                                <li><p>&nbsp&nbsp&nbsp&nbsp{{i.describe}}</p></li>
+                                <ul class="list-unstyled list-inline">
+                                    <li><b>作者：</b>{{i.authorId}}</li>
+                                    <li>发布于：{{i.postTime}}</li>
+                                    {% ifequal i.isTop True%}
+                                    <li class="pull-right"><b>置顶</b></li>
+                                    {%endifequal%}
+                                </ul>
+                            </ul>
+
+                        </td>
+                    </tr>
+                    
+                
+
+                {%endfor%}
+                </table>
+            </div>
+<!--             <div class="col-sm-3" style="height:800px;background:pink;">
+                {%block module%}{%endblock module%}
+            </div> -->
+            {%include 'module.html'%}
+            {%endblock body%}

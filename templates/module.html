@@ -1,0 +1,28 @@
+            
+            <div class="col-sm-3" >
+                {%for i in models.values%}
+                    <h4 class="page-header">{{i.0}}</h4>
+                    
+                        {%for x in i.1%}
+                            
+                            {%ifequal i.0 "热门文章"%}
+                                <p class="text"><a href="{% url 'articleViews:article' x.id %}">{{x}}</a></p>
+                                <p class="help-block">阅读:{{x.viewNum}}</p>
+                            {% endifequal %}
+
+                            {%ifequal i.0 "最近发表"%}
+                                <p class="text"><a href="{% url 'articleViews:article' x.id %}">{{x}}</a></p>
+                                <p class="help-block">{{x.postTime}}</p>
+                            {%endifequal%}
+
+                            {%ifequal i.0 "最新留言"%}
+                                <p class="text">{{x.author}}:<a href="{% url 'articleViews:comment' x.articleId.id %}">{{x}}</a></p>
+                            {%endifequal%}
+                            {%ifequal i.0 "友情链接"%}
+                                <p class="text"><a href="http://{{x.url}}" target='_black'>{{x}}</a></p>
+                            {%endifequal%}
+                        {%endfor%}
+                    
+                {%endfor%}
+                            
+            </div>

@@ -1,0 +1,17 @@
+@charset "UTF-8";
+.col-md-12{
+	margin:0px;
+	padding:0px;
+}
+body{
+	padding-bottom:50px;
+}
+@media screen and (max-width:995px){
+     .col-md-2{
+        display:none;
+     } 
+    }
+@media screen and (max-width:768px){
+     .col-sm-3{
+        display:none;
+     }
